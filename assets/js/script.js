@@ -53,3 +53,43 @@ $("#timeblocks").on("click", ".toDo", function(){
     $(this).children(".task").replaceWith(textInput);
     textInput.trigger("focus");
 });
+
+
+$("#timeblocks").on("click", ".save-btn", function() {
+    var value = $(this)
+    .siblings(".toDo")
+    .find(".text-area")
+    .val();
+
+    var taskP = $("<p>")
+     .addClass(".task")
+     .text(value);
+
+    $(this).siblings(".form-input").replaceWith(taskP);
+    saveToDo($(this).siblings(".toDo"));
+});
+
+function saveToDo(toDo) {
+    var key = "time -" + $(toDo).data("time");
+    var value = $(toDo).find(".task").text();
+
+
+    localStorage.setItem(key, value);
+
+};
+
+function getSavedToDo() {
+   $(".form-input").each(function() {
+       var key = "time-" + $(this).data("time");
+       $(this).find(".task").text(localStorage.getItem(key, value));
+   });
+   
+   
+};
+
+
+// when the page is refreshed the data stays
+
+
+//refresh iterval every 1 second
+setInterval(checkTime, (1000 * 1))
