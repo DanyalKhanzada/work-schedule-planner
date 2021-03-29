@@ -38,3 +38,18 @@ function checkTime () {
     });
 };
 
+// when a time block is clicked you can enter an event
+$("#timeblocks").on("click", ".toDo", function(){
+
+    // console.log("<p> was clicked");
+    var text = $(this)
+        .text()
+        .trim();
+
+    var textInput = $("<textarea>")
+        .addClass("form-input")
+        .val(text);
+    
+    $(this).children(".task").replaceWith(textInput);
+    textInput.trigger("focus");
+});
