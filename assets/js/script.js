@@ -54,7 +54,6 @@ $("#timeblocks").on("click", ".toDo", function(){
     textInput.trigger("focus");
 });
 
-
 $("#timeblocks").on("click", ".save-btn", function() {
     var value = $(this)
     .siblings(".toDo")
@@ -69,22 +68,23 @@ $("#timeblocks").on("click", ".save-btn", function() {
     saveToDo($(this).siblings(".toDo"));
 });
 
+
 function saveToDo(toDo) {
-    var key = "time -" + $(toDo).data("time");
-    var value = $(toDo).find(".task").text();
+     var key = "time -" + $(toDo).data("time");
+     var value = $(toDo).find(".task").text();
 
 
-    localStorage.setItem(key, value);
+     localStorage.setItem(key, value);
 
-};
+ };
 
 function getSavedToDo() {
-   $(".form-input").each(function() {
-       var key = "time-" + $(this).data("time");
-       $(this).find(".task").text(localStorage.getItem(key, value));
-   });
-   
-   
+    $(".form-input").each(function() {
+        var key = "time-" + $(this).data("time");
+        $(this).find(".task").text(localStorage.getItem(key, value));
+    });
+    
+    
 };
 
 
@@ -92,4 +92,4 @@ function getSavedToDo() {
 
 
 //refresh iterval every 1 second
-setInterval(checkTime, (1000 * 1))
+setInterval(checkTime, (1000 * 1));
